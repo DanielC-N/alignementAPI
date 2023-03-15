@@ -1,0 +1,6 @@
+src/
+scripts/
+.nyc_output/
+.idea/
+.parcel-cache/
+package-lock.json
