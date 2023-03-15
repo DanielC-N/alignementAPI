@@ -3,4 +3,5 @@ scripts/
 .nyc_output/
 .idea/
 .parcel-cache/
+example_outputs/
 package-lock.json
