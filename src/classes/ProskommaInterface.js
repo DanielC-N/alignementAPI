@@ -1,4 +1,4 @@
-import { Proskomma } from 'proskomma-cross';
+import { Proskomma } from 'proskomma-core';
 import Axios from 'axios';
 // const path = require('path');
 // const fse = require('fs-extra');
