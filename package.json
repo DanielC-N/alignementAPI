@@ -1,6 +1,6 @@
 {
   "name": "alignmentapi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An API to align words from a source language sentence to other words from a target language sentence. It generates a JSON.",
   "source": "index.js",
   "main": "dist/main.js",
