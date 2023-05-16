@@ -35,9 +35,9 @@ class ProskommaInterface {
         return this.usfms[docSetId];
     }
 
-    testFirstUsfm() {
+    async testFirstUsfm() {
         let arrayIds = this.getIds();
-        let getSpecificId = this.queryPk(`{ documents(ids:"${arrayIds[0]}") { docSetId } }`);
+        let getSpecificId = await this.queryPk(`{ documents(ids:"${arrayIds[0]}") { docSetId } }`);
         // let getSpecificId = await this.queryPk(`{ documents { id docSetId headers { key value } } }`);
         // let getSpecificId = await this.queryPk(`{ documents { docSetId } }`);
         let myKeyUsfm = getSpecificId.data.documents[0].docSetId;
@@ -45,8 +45,8 @@ class ProskommaInterface {
         console.log(theUsfm);
     }
 
-    getIds() {
-        let listIds = this.queryPk("{ documents { id } }");
+    async getIds() {
+        let listIds = await this.queryPk("{ documents { id } }");
         let arrayIds = [];
         listIds.data.documents.forEach(element => {
             arrayIds.push(element.id);
@@ -54,15 +54,15 @@ class ProskommaInterface {
         return arrayIds;
     }
 
-    getSourceText() {
+    async getSourceText() {
         let arrayIds = this.getIds();
-        const resQuery = this.queryPk(`{ documents(ids:"${arrayIds[0]}") { mainSequence { blocks { text } } } }`);
+        const resQuery = await this.queryPk(`{ documents(ids:"${arrayIds[0]}") { mainSequence { blocks { text } } } }`);
         return resQuery.data.documents[0].mainSequence.blocks[0].text;
     }
 
-    getTargetText() {
+    async getTargetText() {
         let arrayIds = this.getIds();
-        const resQuery = this.queryPk(`{ documents(ids:"${arrayIds[1]}") { mainSequence { blocks { text } } } }`);
+        const resQuery = await this.queryPk(`{ documents(ids:"${arrayIds[1]}") { mainSequence { blocks { text } } } }`);
         return resQuery.data.documents[0].mainSequence.blocks[0].text;
     }
 
@@ -85,13 +85,13 @@ class ProskommaInterface {
     //     }
     // }
 
-    addRawDocument(fullText, codeLang="fra", abbr="ust") {
+    async addRawDocument(fullText, codeLang="fra", abbr="ust", contentType="usfm") {
         const mutation = `mutation { addDocument(` +
             `selectors: [{key: "lang", value: "${codeLang}"}, {key: "abbr", value: "${abbr}"}], ` +
-            `contentType: "usfm", ` +
+            `contentType: "${contentType}", ` +
             `content: """${fullText}""") }`;
         const docSetId = codeLang + "_" + abbr;
-        let res = this.queryPk(mutation);
+        let res = await this.queryPk(mutation);
         // does the mutation worked ?
         if(res.data.addDocument) {
             this.usfms[docSetId] = fullText;
@@ -116,8 +116,8 @@ class ProskommaInterface {
         }
     }
 
-    queryPk(query) {
-        const result = this.proskomma.gqlQuerySync(query);
+    async queryPk(query) {
+        const result = await this.proskomma.gqlQuery(query);
         return result;
     }
 
@@ -126,8 +126,8 @@ class ProskommaInterface {
         console.log(JSON.stringify(result.data.documents[0].mainBlocksText[0], null, 2));
     }
 
-    getBookCode() {
-        const res = this.queryPk("{ documents { bookCode: header(id:\"bookCode\") } }");
+    async getBookCode() {
+        const res = await this.queryPk("{ documents { bookCode: header(id:\"bookCode\") } }");
         return res.data.documents[0].bookCode;
     }
 

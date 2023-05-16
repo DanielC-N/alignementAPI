@@ -11,24 +11,32 @@ class Aligner {
      * @param {String[]} targetUsfm - target raw usfm, code lang and abbr
      * @param {boolean} verbose
      */
-    constructor({sourceUsfm=[], targetUsfm=[], verbose=false}) {
+    constructor({sourceText=[], targetText=[], verbose=false}) {
 
         this.proskommaInterface = new ProskommaInterface();
-        if(!isNull(sourceUsfm[0])) {
-            this.proskommaInterface.addRawDocument(sourceUsfm[0], sourceUsfm[1], sourceUsfm[2]);
-            this.sourceUsfm = sourceUsfm[0];
+        let bookCodeSrc, docSetIdSrc, bookCodeTrg, docSetIdTrg = "";
+        if(!isNull(sourceText[0])) {
+            [bookCodeSrc, docSetIdSrc] = this.proskommaInterface.addRawDocument(sourceText[0], sourceText[1], sourceText[2]);
+            this.sourceText = sourceText[0];
         } else {
-            this.sourceUsfm = "";
+            this.sourceText = "";
         }
-        if(!isNull(targetUsfm[0])) {
-            this.proskommaInterface.addRawDocument(targetUsfm[0], targetUsfm[1], targetUsfm[2]);
-            this.targetUsfm = targetUsfm[0];
+        if(!isNull(targetText[0])) {
+            [bookCodeTrg, docSetIdTrg] = this.proskommaInterface.addRawDocument(targetText[0], targetText[1], targetText[2]);
+            this.targetText = targetText[0];
+            if(bookCodeSrc !== "" && bookCodeTrg !== "" && bookCodeSrc != bookCodeTrg) {
+                throw new Error("the book code doesn't match. Are you trying to align two different books ?");
+            } else {
+                this.bookCode = bookCodeSrc;
+            }
         } else {
-            this.targetUsfm = "";
+            this.targetText = "";
         }
         
-        this.currentChapter = 0;
-        this.currentVerse = 0;
+        this.currentChapter = 1;
+        this.currentVerse = 1;
+        this.currentReference = this.generateReference();
+        this.idtexts = [docSetIdSrc, docSetIdTrg];
         this.currentSourceSentence = [];
         this.currentSourceSentenceStr = "";
         this.currentTargetSentence = [];
@@ -64,28 +72,53 @@ class Aligner {
         return this.currentVerse;
     }
 
+    getCurrentReference() {
+        return this.currentReference;
+    }
+
     setCurrentChapter(chapterInt) {
         this.currentChapter = chapterInt;
+        this.generateReference();
     }
 
     setCurrentVerse(verseInt) {
         this.currentVerse = verseInt;
+        this.generateReference();
     }
+
+    /**
+     * change the source chapter/verse to align
+     * @param {int} cint chapter
+     * @param {int} vint verse
+     */
+    async setChapterVerse(cint, vint) {
+        this.setCurrentChapter(cint);
+        this.setCurrentVerse(vint);
+        generateReference();
+
+        this.setCurrentSourceSentence(await getVerseFromCV(this.docSetIdSrc, this.bookCode, cint, vint));
+        this.setCurrentTargetSentence(await getVerseFromCV(this.docSetIdTrg, this.bookCode, cint, vint));
+    }
+
+    loadSourceText()
 
     /**
      * 
      * @param {string[]|string} sentence the sentence for alignment
      */
     setCurrentSourceSentence(sentence) {
+        this.generateReference();
         if(typeof sentence === "object" && !isNull(sentence[0]) && typeof sentence[0] === "string") {
             this.currentSourceSentence = sentence;
         } else if (typeof sentence === "string") {
-            this.currentSourceSentence = sentence.trim().split(/[ ,-]/g).filter(element => {
+            this.currentSourceSentence = sentence.trim().split(/\n|[ ,-]/g).filter(element => {
                 return element.trim() !== "";
             });
             this.currentSourceSentenceStr = sentence;
         }
-        this.AlignementJSON["sourceText"] = this.currentSourceSentenceStr;
+        if(!this.AlignementJSON[this.currentReference]) {
+            this.generateTemplateJson();
+        }
     }
 
     /**
@@ -93,15 +126,18 @@ class Aligner {
      * @param {string[]|string} sentence the sentence for alignment
      */
     setCurrentTargetSentence(sentence) {
+        this.generateReference();
         if(typeof sentence === "object" && !isNull(sentence[0]) && typeof sentence[0] === "string") {
             this.currentTargetSentence = sentence;
         } else if (typeof sentence === "string") {
-            this.currentTargetSentence = sentence.trim().split(/\W+/g).filter(element => {
+            this.currentTargetSentence = sentence.trim().split(/\n|[ ,-]/g).filter(element => {
                 return element.trim() !== "";
             });
             this.currentTargetSentenceStr = sentence;
         }
-        this.AlignementJSON["targetText"] = this.currentTargetSentenceStr;
+        if(!this.AlignementJSON[this.currentReference]) {
+            this.generateTemplateJson();
+        }
     }
 
     /**
@@ -118,19 +154,19 @@ class Aligner {
      * @param {int} targetIndex the index of the TARGET language to align
      */
     addAlignment(sourceIndex, targetIndex) {
-        // let ref = this.generateReference();
+        this.generateReference();
         let sWord = this.currentSourceSentence[sourceIndex];
         let tWord = this.currentTargetSentence[targetIndex];
-        if(!this.AlignementJSON["alignments"][sWord]) {
-            this.AlignementJSON["alignments"][sWord] = this.generateTemplateAlign(
+        if(!this.AlignementJSON[this.currentReference]["alignments"][sWord]) {
+            this.AlignementJSON[this.currentReference]["alignments"][sWord] = this.generateTemplateAlign(
                 sWord,
                 tWord,
                 sourceIndex,
                 targetIndex,
             );
         } else {
-            this.AlignementJSON["alignments"][sWord]["targetWords"].push(tWord);
-            this.AlignementJSON["alignments"][sWord]["targetIndexes"].push(targetIndex);
+            this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"].push(tWord);
+            this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetIndexes"].push(targetIndex);
         }
     }
 
@@ -141,22 +177,23 @@ class Aligner {
      * @returns nothing
      */
     removeAlignment(sourceIndex, targetIndex) {
+        this.generateReference();
         let sWord = this.currentSourceSentence[sourceIndex];
         let tWord = this.currentTargetSentence[targetIndex];
 
         // removing the word from 'targetWords'
-        let index = this.AlignementJSON["alignments"][sWord]["targetWords"].indexOf(tWord);
+        let index = this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"].indexOf(tWord);
         if (index !== -1) {
-            this.AlignementJSON["alignments"][sWord]["targetWords"].splice(index, 1);
+            this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"].splice(index, 1);
 
             // if the array of the current alignement is empty, we completely
             // remove the entry "sWord"
-            if(isNull(this.AlignementJSON["alignments"][sWord]["targetWords"][0])) {
-                delete this.AlignementJSON["alignments"][sWord];
+            if(isNull(this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"][0])) {
+                delete this.AlignementJSON[this.currentReference]["alignments"][sWord];
                 return;
             }
 
-            this.AlignementJSON["alignments"][sWord]["targetIndexes"].splice(index, 1);
+            this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetIndexes"].splice(index, 1);
         }
     }
 
@@ -175,7 +212,7 @@ class Aligner {
             cv = "0"+cv;
         }
 
-        return cc+cv;
+        this.currentReference = cc+cv;
     }
 
     /**
@@ -187,7 +224,8 @@ class Aligner {
      * @param {int} targetIndex 
      */
     generateTemplateJson() {
-        this.AlignementJSON = {
+        this.generateReference();
+        this.AlignementJSON[this.currentReference] = {
             "sourceText": this.currentSourceSentenceStr,
             "targetText": this.currentTargetSentenceStr,
             "alignments": {}
