@@ -7,26 +7,35 @@ import ProskommaInterface from './ProskommaInterface';
 class Aligner {
     /**
      *
-     * @param {String[]} sourceUsfm - source raw usfm, code lang and abbr
-     * @param {String[]} targetUsfm - target raw usfm, code lang and abbr
+     * @param {String[]} sourceUsfm - source raw str/json, code lang and abbr
+     * @param {String[]} targetUsfm - target raw str/json, code lang and abbr
      * @param {boolean} verbose
-     */
+    */
     constructor({sourceText=[], targetText=[], verbose=false}) {
-
+        this.numberVersesInChapters = [];
+        this.numChapters = 0;
+        this.numVersesOfCurrentChapter = 0;
         this.proskommaInterface = new ProskommaInterface();
-        let bookCodeSrc, docSetIdSrc, bookCodeTrg, docSetIdTrg = "";
-        if(!isNull(sourceText[0])) {
-            [bookCodeSrc, docSetIdSrc] = this.proskommaInterface.addRawDocument(sourceText[0], sourceText[1], sourceText[2]);
+        this.bookCodeSrc, this.docSetIdSrc, this.bookCodeTrg, this.docSetIdTrg = "";
+        if(sourceText[0] != null) {
+            [this.bookCodeSrc, this.docSetIdSrc] = this.proskommaInterface.addRawDocument(sourceText[0], sourceText[1], sourceText[2]);
             this.sourceText = sourceText[0];
         } else {
             this.sourceText = "";
         }
-        if(!isNull(targetText[0])) {
-            [bookCodeTrg, docSetIdTrg] = this.proskommaInterface.addRawDocument(targetText[0], targetText[1], targetText[2]);
+        if(targetText[0] != null) {
+            [this.bookCodeTrg, this.docSetIdTrg] = this.proskommaInterface.addRawDocument(targetText[0], targetText[1], targetText[2]);
             this.targetText = targetText[0];
             if(bookCodeSrc !== "" && bookCodeTrg !== "" && bookCodeSrc != bookCodeTrg) {
                 throw new Error("the book code doesn't match. Are you trying to align two different books ?");
             } else {
+                let resintegrity = this.checkIntegrity(docSetIdSrc, bookCodeSrc, docSetIdTrg, bookCodeTrg);
+                let isGood = resintegrity[0];
+                if(!isGood) {
+                    throw Error("the source book does not match the number of chapters/verses of the target book\n", "src ==", resintegrity[1], "| target ==", resintegrity[2]);
+                }
+                this.numberVersesInChapters = resintegrity[1];
+                this.numVersesOfCurrentChapter = this.numberVersesInChapters[0].length;
                 this.bookCode = bookCodeSrc;
             }
         } else {
@@ -42,10 +51,24 @@ class Aligner {
         this.currentTargetSentence = [];
         this.currentTargetSentenceStr = "";
         this.verbose = verbose;
-        this.AlignementJSON=JSON.parse("{}");
-        this.AlignementJSON.sourceText = this.currentSourceSentenceStr;
-        this.AlignementJSON.targetText = this.currentTargetSentenceStr;
-        this.AlignementJSON.alignments = {};
+        this.AlignementJSON = JSON.parse("{}");
+    }
+
+    setTargetText(raw, codeLang, abbr) {
+        [this.bookCodeTrg, this.docSetIdTrg] = this.proskommaInterface.addRawDocument(raw, codeLang, abbr);
+        this.targetText = raw;
+        if(this.bookCodeSrc !== "" && this.bookCodeTrg !== "" && this.bookCodeSrc != this.bookCodeTrg) {
+            throw new Error("the book code doesn't match. Are you trying to align two different books ?");
+        } else {
+            let resintegrity = this.checkIntegrity(this.docSetIdSrc, this.bookCodeSrc, this.docSetIdTrg, this.bookCodeTrg);
+            let isGood = resintegrity[0];
+            if(!isGood) {
+                throw Error("the source book does not match the number of chapters/verses of the target book\n", "src ==", resintegrity[1], "| target ==", resintegrity[2]);
+            }
+            this.numberVersesInChapters = resintegrity[1];
+            this.numVersesOfCurrentChapter = this.numberVersesInChapters[0].length;
+            this.bookCode = bookCodeSrc;
+        }
     }
 
     /**
@@ -76,6 +99,22 @@ class Aligner {
         return this.currentReference;
     }
 
+    getNumberOfChapters() {
+        return this.numberVersesInChapters.length;
+    }
+
+    getNumberOfVersesInCurrentChapter() {
+        return this.numberVersesInChapters[this.currentChapter-1];
+    }
+
+    getNumberVersesInChapters() {
+        return this.numberVersesInChapters;
+    }
+
+    setNumberVersesInChapters() {
+        this.numberVersesInChapters = this.countVersesInChapters()[1];
+    }
+
     setCurrentChapter(chapterInt) {
         this.currentChapter = chapterInt;
         this.generateReference();
@@ -87,6 +126,46 @@ class Aligner {
     }
 
     /**
+     * get the source text from proskomma instance in usfm (default) or perf
+     * @param {string} type "usfm" or "perf"
+     * @returns {string}
+     */
+    async getSourceText(type="usfm") {
+        let res = await this.proskommaInterfaceSource.queryPk(`{documents(ids:"${this.idtexts[0]}") {${type}}}`);
+        return res;
+    }
+
+    /**
+     * get the source text from proskomma instance in usfm (default) or perf
+     * @param {string} type "usfm" or "perf"
+     * @returns {string}
+     */
+    async getTargetText(type="usfm") {
+        let res = await this.proskommaInterfaceSource.queryPk(`{documents(ids:"${this.idtexts[1]}") {${type}}}`);
+        return res;
+    }
+
+    resetAlignment() {
+        this.AlignementJSON[this.currentReference]["alignments"] = {};
+    }
+
+    fullResetAlignment() {
+        this.AlignementJSON = JSON.parse("{}");
+    }
+
+    checkIntegrity(docSetIdSrc, bookCodeSrc, docSetIdTrg,bookCodeTrg) {
+        let nbSrc = countVersesInChapters(docSetIdSrc, bookCodeSrc);
+        let nbTrg = countVersesInChapters(docSetIdTrg, bookCodeTrg);
+
+        if(nbSrc.length != nbTrg.length) {
+            return false;
+        } else {
+            this.numChapters = nbSrc.length;
+        }
+        return [JSON.stringify(nbSrc.slice()) === JSON.stringify(nbTrg.slice()), nbSrc, nbTrg];
+    }
+
+    /**
      * change the source chapter/verse to align
      * @param {int} cint chapter
      * @param {int} vint verse
@@ -94,22 +173,25 @@ class Aligner {
     async setChapterVerse(cint, vint) {
         this.setCurrentChapter(cint);
         this.setCurrentVerse(vint);
-        generateReference();
+        this.generateReference();
 
         this.setCurrentSourceSentence(await getVerseFromCV(this.docSetIdSrc, this.bookCode, cint, vint));
         this.setCurrentTargetSentence(await getVerseFromCV(this.docSetIdTrg, this.bookCode, cint, vint));
     }
 
-    loadSourceText()
-
     /**
      * 
      * @param {string[]|string} sentence the sentence for alignment
+     * @param {string} sentenceStr if 'sentence' is an object, please provide the input sentence str
      */
-    setCurrentSourceSentence(sentence) {
+    setCurrentSourceSentence(sentence, sentenceStr="") {
         this.generateReference();
         if(typeof sentence === "object" && !isNull(sentence[0]) && typeof sentence[0] === "string") {
+            if(sentenceStr == "") {
+                throw new Error("Please provide the string of the source sentence (2nd argument : 'sentenceStr')");
+            }
             this.currentSourceSentence = sentence;
+            this.currentSourceSentenceStr = sentenceStr;
         } else if (typeof sentence === "string") {
             this.currentSourceSentence = sentence.trim().split(/\n|[ ,-]/g).filter(element => {
                 return element.trim() !== "";
@@ -118,17 +200,24 @@ class Aligner {
         }
         if(!this.AlignementJSON[this.currentReference]) {
             this.generateTemplateJson();
+        } else {
+            if(!this.AlignementJSON[this.currentReference]["sourceText"]
+                || (this.AlignementJSON[this.currentReference]["sourceText"] && this.AlignementJSON[this.currentReference]["sourceText"] == "")) {
+                this.AlignementJSON[this.currentReference]["sourceText"] = this.currentSourceSentenceStr;
+            }
         }
     }
 
     /**
      * 
      * @param {string[]|string} sentence the sentence for alignment
+     * @param {string} sentenceStr if 'sentence' is an object, please provide the input sentence str
      */
-    setCurrentTargetSentence(sentence) {
+    setCurrentTargetSentence(sentence, sentenceStr="") {
         this.generateReference();
         if(typeof sentence === "object" && !isNull(sentence[0]) && typeof sentence[0] === "string") {
             this.currentTargetSentence = sentence;
+            this.currentTargetSentenceStr = sentenceStr;
         } else if (typeof sentence === "string") {
             this.currentTargetSentence = sentence.trim().split(/\n|[ ,-]/g).filter(element => {
                 return element.trim() !== "";
@@ -137,6 +226,11 @@ class Aligner {
         }
         if(!this.AlignementJSON[this.currentReference]) {
             this.generateTemplateJson();
+        } else {
+            if(!this.AlignementJSON[this.currentReference]["targetText"]
+                || (this.AlignementJSON[this.currentReference]["targetText"] && this.AlignementJSON[this.currentReference]["targetText"] == "")) {
+                this.AlignementJSON[this.currentReference]["targetText"] = this.currentTargetSentenceStr;
+            }
         }
     }
 
@@ -185,14 +279,14 @@ class Aligner {
         let index = this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"].indexOf(tWord);
         if (index !== -1) {
             this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"].splice(index, 1);
-
+            
             // if the array of the current alignement is empty, we completely
             // remove the entry "sWord"
-            if(isNull(this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"][0])) {
+            if(this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"][0] == null) {
                 delete this.AlignementJSON[this.currentReference]["alignments"][sWord];
                 return;
             }
-
+            
             this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetIndexes"].splice(index, 1);
         }
     }
@@ -215,13 +309,35 @@ class Aligner {
         this.currentReference = cc+cv;
     }
 
+    countVersesInChapters(docSetId="", bookCode="") {
+        if(!docSetId[0]) {
+            docSetId = this.idtexts[0];
+        }
+        if(!bookCode[0]) {
+            bookCode = this.bookCode;
+        }
+        
+        const verseQuery =
+        `{ docSet (id: "${docSetId}") { document(bookCode:"${bookCode}") {` +
+        `    cvIndexes { verseNumbers { number } } } } }`;
+        const { data } = this.proskommaInterface.queryPkSync(verseQuery);
+
+        let cvI = data.docSet.document.cvIndexes;
+        let numVerses = [];
+        for (let i = 0; i < cvI.length; i++) {
+            numVerses.push(cvI[i].verseNumbers.length);
+        }
+
+        return numVerses;
+    }
+
     /**
      * 
      * @param {string} reference string in format chapterVerse. Ex : '001001' (chapter 1, verse 1)
      * @param {string} sourceWord the source word of the alignment
      * @param {string} targetWord the target word of the alignment
-     * @param {int} sourceIndex 
-     * @param {int} targetIndex 
+     * @param {int} sourceIndex
+     * @param {int} targetIndex
      */
     generateTemplateJson() {
         this.generateReference();
