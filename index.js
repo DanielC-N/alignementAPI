@@ -1,3 +1,3 @@
-import Aligner from "./src/classes/alignmentApi";
+import { Aligner } from "./src/classes/alignmentApi";
 
-export default Aligner;
+export { Aligner };

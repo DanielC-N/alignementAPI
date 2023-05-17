@@ -3,6 +3,7 @@ dist/
 alignedtext*
 alignmenttests/
 example_outputs/
+functionnalities.md
 
 # Logs
 logs

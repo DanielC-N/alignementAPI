@@ -1,6 +1,6 @@
-import { isNull } from 'lodash';
 // import { Proskomma } from 'proskomma-cross';
 import ProskommaInterface from './ProskommaInterface';
+// let ProskommaInterface = require('./ProskommaInterface');
 // import Epitelete from 'epitelete';
 // import { PipelineHandler } from 'proskomma-json-tools';
 
@@ -18,13 +18,17 @@ class Aligner {
         this.proskommaInterface = new ProskommaInterface();
         this.bookCodeSrc, this.docSetIdSrc, this.bookCodeTrg, this.docSetIdTrg = "";
         if(sourceText[0] != null) {
-            [this.bookCodeSrc, this.docSetIdSrc] = this.proskommaInterface.addRawDocument(sourceText[0], sourceText[1], sourceText[2]);
+            let resRaw = this.proskommaInterface.addRawDocument(sourceText[0], sourceText[1], sourceText[2]);
+            this.bookCodeSrc = resRaw[0];
+            this.docSetIdSrc = resRaw[1];
             this.sourceText = sourceText[0];
         } else {
             this.sourceText = "";
         }
         if(targetText[0] != null) {
-            [this.bookCodeTrg, this.docSetIdTrg] = this.proskommaInterface.addRawDocument(targetText[0], targetText[1], targetText[2]);
+            resRaw = this.proskommaInterface.addRawDocument(targetText[0], targetText[1], targetText[2]);
+            this.bookCodeTrg = resRaw[0];
+            this.docSetIdTrg = resRaw[1];
             this.targetText = targetText[0];
             if(bookCodeSrc !== "" && bookCodeTrg !== "" && bookCodeSrc != bookCodeTrg) {
                 throw new Error("the book code doesn't match. Are you trying to align two different books ?");
@@ -45,7 +49,7 @@ class Aligner {
         this.currentChapter = 1;
         this.currentVerse = 1;
         this.currentReference = this.generateReference();
-        this.idtexts = [docSetIdSrc, docSetIdTrg];
+        this.idtexts = [this.docSetIdSrc, this.docSetIdTrg];
         this.currentSourceSentence = [];
         this.currentSourceSentenceStr = "";
         this.currentTargetSentence = [];
@@ -55,7 +59,9 @@ class Aligner {
     }
 
     setTargetText(raw, codeLang, abbr) {
-        [this.bookCodeTrg, this.docSetIdTrg] = this.proskommaInterface.addRawDocument(raw, codeLang, abbr);
+        resRaw = this.proskommaInterface.addRawDocument(raw, codeLang, abbr);
+        this.bookCodeTrg = resRaw[0];
+        this.docSetIdTrg = resRaw[1];
         this.targetText = raw;
         if(this.bookCodeSrc !== "" && this.bookCodeTrg !== "" && this.bookCodeSrc != this.bookCodeTrg) {
             throw new Error("the book code doesn't match. Are you trying to align two different books ?");
@@ -186,7 +192,7 @@ class Aligner {
      */
     setCurrentSourceSentence(sentence, sentenceStr="") {
         this.generateReference();
-        if(typeof sentence === "object" && !isNull(sentence[0]) && typeof sentence[0] === "string") {
+        if(typeof sentence === "object" && sentence[0] != null && typeof sentence[0] === "string") {
             if(sentenceStr == "") {
                 throw new Error("Please provide the string of the source sentence (2nd argument : 'sentenceStr')");
             }
@@ -215,7 +221,7 @@ class Aligner {
      */
     setCurrentTargetSentence(sentence, sentenceStr="") {
         this.generateReference();
-        if(typeof sentence === "object" && !isNull(sentence[0]) && typeof sentence[0] === "string") {
+        if(typeof sentence === "object" && sentence[0] != null && typeof sentence[0] === "string") {
             this.currentTargetSentence = sentence;
             this.currentTargetSentenceStr = sentenceStr;
         } else if (typeof sentence === "string") {
@@ -366,4 +372,4 @@ class Aligner {
     }
 }
 
-export default Aligner;
+module.exports = { Aligner };
