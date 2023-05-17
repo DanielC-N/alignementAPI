@@ -27,4 +27,16 @@ aligner.addAlignment(2, 4); // "Θεοῦ" : "of", "God"
 * handling a source usfm and a target usfm as an input
 * being able to choose a verse/sentence in the given usfms
 * enhance the output JSON (having lemmas and other informations could be great)
-* using `PipelineHandler` from `proskomma-json-tools` to output a final aligned usfm from the JSON informations
+
+1) swapping source texts : **DONE**
+2) many to many word alignment : **DONE**
+3) modifying existing alignments : *TBD*
+4) resetting the alignment : **DONE**
+5) how to specify how much of the text is to be aligned (single/multiple verse, ect) : *TBD*
+6) other features of the API to showcase : working on a video
+7) outputting to uW's format USFM : **DOING** (finalizing the transform USFM+alignment Data => USFM aligned) => using `PipelineHandler` from `proskomma-json-tools` to output a final aligned usfm from the JSON informations *TBD*
+8) 3-way alignment (not a priority if it's not included) : *TBD*
+9) proskomma-core back end : **DONE**
+10) selecting chapter-verses to align through a provided usfm : **DONE**
+11) a mechanism to know if the alignment for the selected portion is complete : *TBD*
+12) related to the above demonstrate how to calculate the percentage of the book that's been aligned : *TBD*
