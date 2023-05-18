@@ -94,10 +94,10 @@ class ProskommaInterface {
      * @param {string} contentType [usfm, perf, sofria]
      * @returns [bookCode, docSetId]
      */
-    async addRawDocument(fullText, codeLang="fra", abbr="ust", contentType="usfm") {
+    addRawDocument(fullText, codeLang="fra", abbr="ust", contentType="usfm") {
         const docSetId = codeLang + "_" + abbr;
         // let res = await this.queryPk(mutation);
-        let result = await this.proskomma.importDocument(
+        let result = this.proskomma.importDocument(
             {
                 lang: codeLang,
                 abbr: abbr

@@ -5,9 +5,9 @@
   "source": "index.js",
   "main": "dist/main.js",
   "scripts": {
-    "test": "bash -c \"tape -r @babel/register test/code/**/*.cjs | node_modules/tap-summary/bin/cmd.js\"",
-    "win:test": "bash -c \"tape -r @babel/register test/code/**/*.cjs | node_modules/tap-summary/bin/cmd.js\"",
-    "rawTest": "bash -c \"tape -r @babel/register test/code/*.cjs\"",
+    "test": "bash -c \"tape -r @babel/register tests/code/**/*.cjs | node_modules/tap-summary/bin/cmd.js\"",
+    "win:test": "bash -c \"tape -r @babel/register tests/code/**/*.cjs | node_modules/tap-summary/bin/cmd.js\"",
+    "rawTest": "bash -c \"tape -r @babel/register tests/code/**/*.cjs\"",
     "watch": "parcel watch",
     "build": "rm -fr dist && parcel build --no-source-maps",
     "prepublishOnly": "npm run build"

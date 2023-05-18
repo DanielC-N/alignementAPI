@@ -17,30 +17,32 @@ class Aligner {
         this.numVersesOfCurrentChapter = 0;
         this.proskommaInterface = new ProskommaInterface();
         this.bookCodeSrc, this.docSetIdSrc, this.bookCodeTrg, this.docSetIdTrg = "";
-        if(sourceText[0] != null) {
-            let resRaw = this.proskommaInterface.addRawDocument(sourceText[0], sourceText[1], sourceText[2]);
+        let resRaw = null;
+        if(sourceText && sourceText[0] != null && sourceText.length === 3) {
+            resRaw = this.proskommaInterface.addRawDocument(sourceText[0], sourceText[1], sourceText[2]);
             this.bookCodeSrc = resRaw[0];
             this.docSetIdSrc = resRaw[1];
             this.sourceText = sourceText[0];
+            this.bookCode = this.bookCodeSrc;
         } else {
             this.sourceText = "";
         }
-        if(targetText[0] != null) {
+        if(targetText && targetText[0] != null && targetText.length === 3) {
             resRaw = this.proskommaInterface.addRawDocument(targetText[0], targetText[1], targetText[2]);
             this.bookCodeTrg = resRaw[0];
             this.docSetIdTrg = resRaw[1];
             this.targetText = targetText[0];
-            if(bookCodeSrc !== "" && bookCodeTrg !== "" && bookCodeSrc != bookCodeTrg) {
+            if(this.bookCodeSrc !== "" && this.bookCodeTrg !== "" && this.bookCodeSrc != this.bookCodeTrg) {
                 throw new Error("the book code doesn't match. Are you trying to align two different books ?");
             } else {
-                let resintegrity = this.checkIntegrity(docSetIdSrc, bookCodeSrc, docSetIdTrg, bookCodeTrg);
+                let resintegrity = this.checkIntegrity(this.docSetIdSrc, this.bookCodeSrc, this.docSetIdTrg, this.bookCodeTrg);
                 let isGood = resintegrity[0];
                 if(!isGood) {
                     throw Error("the source book does not match the number of chapters/verses of the target book\n", "src ==", resintegrity[1], "| target ==", resintegrity[2]);
                 }
                 this.numberVersesInChapters = resintegrity[1];
                 this.numVersesOfCurrentChapter = this.numberVersesInChapters[0].length;
-                this.bookCode = bookCodeSrc;
+                this.bookCode = this.bookCodeSrc;
             }
         } else {
             this.targetText = "";
@@ -59,7 +61,7 @@ class Aligner {
     }
 
     setTargetText(raw, codeLang, abbr) {
-        resRaw = this.proskommaInterface.addRawDocument(raw, codeLang, abbr);
+        let resRaw = this.proskommaInterface.addRawDocument(raw, codeLang, abbr);
         this.bookCodeTrg = resRaw[0];
         this.docSetIdTrg = resRaw[1];
         this.targetText = raw;
@@ -73,7 +75,7 @@ class Aligner {
             }
             this.numberVersesInChapters = resintegrity[1];
             this.numVersesOfCurrentChapter = this.numberVersesInChapters[0].length;
-            this.bookCode = bookCodeSrc;
+            this.bookCode = this.bookCodeSrc;
         }
     }
 
@@ -91,6 +93,10 @@ class Aligner {
      */
     getCurrentSourceSentence() {
         return this.currentSourceSentence;
+    }
+
+    getBookCode() {
+        return this.bookCode ? this.bookCode : this.bookCodeSrc;
     }
 
     getCurrentChapter() {
@@ -137,8 +143,9 @@ class Aligner {
      * @returns {string}
      */
     async getSourceText(type="usfm") {
-        let res = await this.proskommaInterfaceSource.queryPk(`{documents(ids:"${this.idtexts[0]}") {${type}}}`);
-        return res;
+        let query = `{ docSet (id: "${this.idtexts[0]}") { document(bookCode:"${this.bookCode}") { ${type} }}}`;
+        let { data } = await this.proskommaInterface.queryPk(query);
+        return data.docSet.document[`${type}`];
     }
 
     /**
@@ -147,8 +154,9 @@ class Aligner {
      * @returns {string}
      */
     async getTargetText(type="usfm") {
-        let res = await this.proskommaInterfaceSource.queryPk(`{documents(ids:"${this.idtexts[1]}") {${type}}}`);
-        return res;
+        let query = `{ docSet (id: "${this.idtexts[1]}") { document(bookCode:"${this.bookCode}") { ${type} }}}`;
+        let { data } = await this.proskommaInterface.queryPk(query);
+        return data.docSet.document[`${type}`];
     }
 
     resetAlignment() {
@@ -160,8 +168,8 @@ class Aligner {
     }
 
     checkIntegrity(docSetIdSrc, bookCodeSrc, docSetIdTrg,bookCodeTrg) {
-        let nbSrc = countVersesInChapters(docSetIdSrc, bookCodeSrc);
-        let nbTrg = countVersesInChapters(docSetIdTrg, bookCodeTrg);
+        let nbSrc = this.countVersesInChapters(docSetIdSrc, bookCodeSrc);
+        let nbTrg = this.countVersesInChapters(docSetIdTrg, bookCodeTrg);
 
         if(nbSrc.length != nbTrg.length) {
             return false;
