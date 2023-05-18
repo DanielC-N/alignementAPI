@@ -89,10 +89,26 @@ class Aligner {
 
     /**
      * 
+     * @returns {string}
+     */
+    getCurrentTargetSentenceStr() {
+        return this.currentTargetSentenceStr;
+    }
+
+    /**
+     * 
      * @returns {string[]}
      */
     getCurrentSourceSentence() {
         return this.currentSourceSentence;
+    }
+
+    /**
+     * 
+     * @returns {string}
+     */
+    getCurrentSourceSentenceStr() {
+        return this.currentSourceSentenceStr;
     }
 
     getBookCode() {
@@ -185,12 +201,33 @@ class Aligner {
      * @param {int} vint verse
      */
     async setChapterVerse(cint, vint) {
-        this.setCurrentChapter(cint);
-        this.setCurrentVerse(vint);
-        this.generateReference();
+        if(cint == null) {
+            throw new Error("alignmentAPI : chapter index is null or undefined (cint, vint) == (" + cint + ", " + vint + ")");
+        }
+        if(vint == null) {
+            throw new Error("alignmentAPI : verse index is null or undefined (cint, vint) == (" + cint + ", " + vint + ")");
+        }
+        let odlChapRef = this.currentChapter;
+        let odlVerseRef = this.currentVerse;
+        let oldReference = this.currentReference;
+        try {
+            this.setCurrentChapter(cint);
+            this.setCurrentVerse(vint);
+            let getVerseCV = await this.proskommaInterface.getVerseFromCV(this.docSetIdSrc, this.bookCode, cint, vint);
+            this.setCurrentSourceSentence(getVerseCV);
+            getVerseCV = await this.proskommaInterface.getVerseFromCV(this.docSetIdTrg, this.bookCode, cint, vint);
+            this.setCurrentTargetSentence(getVerseCV);
+            this.generateReference();
+        } catch (err) {
+            this.setCurrentChapter(odlChapRef);
+            this.setCurrentVerse(odlVerseRef);
+            // console.error(err);
+        }
 
-        this.setCurrentSourceSentence(await getVerseFromCV(this.docSetIdSrc, this.bookCode, cint, vint));
-        this.setCurrentTargetSentence(await getVerseFromCV(this.docSetIdTrg, this.bookCode, cint, vint));
+        // if there is not alignements for the old verse, we delete the entry
+        if(this.AlignementJSON[oldReference] && Object.keys(this.AlignementJSON[oldReference]["alignments"]).length == 0) {
+            delete this.AlignementJSON[oldReference];
+        }
     }
 
     /**
@@ -230,6 +267,9 @@ class Aligner {
     setCurrentTargetSentence(sentence, sentenceStr="") {
         this.generateReference();
         if(typeof sentence === "object" && sentence[0] != null && typeof sentence[0] === "string") {
+            if(sentenceStr == "") {
+                throw new Error("Please provide the string of the target sentence (2nd argument : 'sentenceStr')");
+            }
             this.currentTargetSentence = sentence;
             this.currentTargetSentenceStr = sentenceStr;
         } else if (typeof sentence === "string") {
@@ -262,9 +302,15 @@ class Aligner {
      * @param {int} targetIndex the index of the TARGET language to align
      */
     addAlignment(sourceIndex, targetIndex) {
-        this.generateReference();
         let sWord = this.currentSourceSentence[sourceIndex];
+        if(!sWord) {
+            throw new Error(`sourceIndex == ${sourceIndex} is not valid : please select a correct range : 1:${this.currentSourceSentence.length} (or maybe you don't have any source sentence...)`);
+        }
         let tWord = this.currentTargetSentence[targetIndex];
+        if(!tWord) {
+            throw new Error(`targetIndex == ${targetIndex} is not valid : please select a correct range : 1:${this.currentTargetSentence.length} (or maybe you don't have any target sentence...)`);
+        }
+        this.generateReference();
         if(!this.AlignementJSON[this.currentReference]["alignments"][sWord]) {
             this.AlignementJSON[this.currentReference]["alignments"][sWord] = this.generateTemplateAlign(
                 sWord,
@@ -289,8 +335,16 @@ class Aligner {
         let sWord = this.currentSourceSentence[sourceIndex];
         let tWord = this.currentTargetSentence[targetIndex];
 
+        if(!this.AlignementJSON[this.currentReference]) return; // if the reference does not exist, get out
+        // if the prop 'alignments' does not exist we create it for safety and we get out
+        if(!this.AlignementJSON[this.currentReference]["alignments"]) {
+            this.AlignementJSON[this.currentReference]["alignments"] = {};
+            return;
+        }
+        let theWordToRemove = this.AlignementJSON[this.currentReference]["alignments"][sWord];
+        if(!theWordToRemove) return;
         // removing the word from 'targetWords'
-        let index = this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"].indexOf(tWord);
+        let index = theWordToRemove["targetWords"].indexOf(tWord);
         if (index !== -1) {
             this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"].splice(index, 1);
             
@@ -298,6 +352,11 @@ class Aligner {
             // remove the entry "sWord"
             if(this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetWords"][0] == null) {
                 delete this.AlignementJSON[this.currentReference]["alignments"][sWord];
+
+                // if all alignements have been deleted, we delete the whole entry
+                if(Object.keys(this.AlignementJSON[this.currentReference]["alignments"]).length == 0) {
+                    delete this.AlignementJSON[this.currentReference];
+                }
                 return;
             }
             
@@ -310,13 +369,13 @@ class Aligner {
         let cv = this.currentVerse.toString();
         if(this.currentChapter > 0 && this.currentChapter < 10) {
             cc = "00"+cc;
-        } else if (this.currentChapter > 10 && this.currentChapter < 100) {
+        } else if (this.currentChapter >= 10 && this.currentChapter < 100) {
             cc = "0"+cc;
         }
 
         if(this.currentVerse > 0 && this.currentVerse < 10) {
             cv = "00"+cv;
-        } else if (this.currentVerse > 10 && this.currentVerse < 100) {
+        } else if (this.currentVerse >= 10 && this.currentVerse < 100) {
             cv = "0"+cv;
         }
 

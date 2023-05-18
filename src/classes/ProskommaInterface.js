@@ -212,7 +212,7 @@ class ProskommaInterface {
         const { data } = await this.queryPk(query);
         const block = data.docSet.document.mainSequence.blocks[0];
         if(block == null) {
-            return new Error(`ProskommaInterface : the pair Chapter:Verse == ${cint}:${vint} was not found`);
+            throw new Error(`ProskommaInterface : the pair Chapter:Verse == ${cint}:${vint} was not found`);
         }
         return block.text;
     }
