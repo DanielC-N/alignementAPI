@@ -201,10 +201,10 @@ class Aligner {
      * @param {int} vint verse
      */
     async setChapterVerse(cint, vint) {
-        if(cint == null) {
+        if(cint == null || cint == 0) {
             throw new Error("alignmentAPI : chapter index is null or undefined (cint, vint) == (" + cint + ", " + vint + ")");
         }
-        if(vint == null) {
+        if(vint == null || vint == 0) {
             throw new Error("alignmentAPI : verse index is null or undefined (cint, vint) == (" + cint + ", " + vint + ")");
         }
         let odlChapRef = this.currentChapter;
@@ -221,7 +221,7 @@ class Aligner {
         } catch (err) {
             this.setCurrentChapter(odlChapRef);
             this.setCurrentVerse(odlVerseRef);
-            // console.error(err);
+            throw err;
         }
 
         // if there is not alignements for the old verse, we delete the entry
@@ -252,10 +252,7 @@ class Aligner {
         if(!this.AlignementJSON[this.currentReference]) {
             this.generateTemplateJson();
         } else {
-            if(!this.AlignementJSON[this.currentReference]["sourceText"]
-                || (this.AlignementJSON[this.currentReference]["sourceText"] && this.AlignementJSON[this.currentReference]["sourceText"] == "")) {
-                this.AlignementJSON[this.currentReference]["sourceText"] = this.currentSourceSentenceStr;
-            }
+            this.AlignementJSON[this.currentReference]["sourceText"] = this.currentSourceSentenceStr;
         }
     }
 
@@ -281,10 +278,7 @@ class Aligner {
         if(!this.AlignementJSON[this.currentReference]) {
             this.generateTemplateJson();
         } else {
-            if(!this.AlignementJSON[this.currentReference]["targetText"]
-                || (this.AlignementJSON[this.currentReference]["targetText"] && this.AlignementJSON[this.currentReference]["targetText"] == "")) {
-                this.AlignementJSON[this.currentReference]["targetText"] = this.currentTargetSentenceStr;
-            }
+            this.AlignementJSON[this.currentReference]["targetText"] = this.currentTargetSentenceStr;
         }
     }
 

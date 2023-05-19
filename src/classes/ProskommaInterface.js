@@ -132,12 +132,12 @@ class ProskommaInterface {
             this.verbose && console.log(`Fetching HTTP content for Source lsg_tit.usfm`);
             const response = await Axios.get(addr);
             if (response.status !== 200) {
-                console.log(`Status code ${response.status} when fetching content by HTTP(S) for Source : ${addr}`);
+                console.error(`Status code ${response.status} when fetching content by HTTP(S) for Source : ${addr}`);
             } else {
                 await this.addRawDocument(response.data, codeLang, abbr, contentType);
             }
         } catch (err) {
-            console.log(`Exception when fetching content by HTTP(S) for Source lsg_tit.usfm: \n${err}`);
+            throw new Error(`Exception when fetching content by HTTP(S) for Source lsg_tit.usfm: \n${err}`);
         }
     }
 

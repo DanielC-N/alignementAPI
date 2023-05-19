@@ -25,7 +25,7 @@ test(
             let { usfm, bookCode } = await getBook(greekUrl);
             t.doesNotThrow(() => new Aligner({ sourceText: [usfm, "grk", "ugnt"], targetText: [], verbose: false}));
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     },
 );
@@ -39,7 +39,7 @@ test(
             let target = await getBook(defaultUrl);
             t.doesNotThrow(() => new Aligner({ sourceText: [source.usfm, "grk", "ugnt"], targetText: [target.usfm, "fra", "lsg"], verbose: false}));
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     },
 );
@@ -60,7 +60,7 @@ test(
             t.equal(sourceUsfm.split("\n")[0], srcFirstLine);
             t.equal(targetUsfm.split("\n")[0], trgFirstLine);
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     },
 );
@@ -68,21 +68,42 @@ test(
 test(
     `setChapterVerse checks (${testGroup})`,
     async function (t) {
+        t.plan(5);
+        if(!alignerTool) {
+            let source = await getBook(greekUrl);
+            let target = await getBook(defaultUrl);
+            alignerTool = new Aligner({ sourceText: [source.usfm, "grk", "ugnt"], targetText: [target.usfm, "fra", "lsg"], verbose: false});
+        }
         try {
-            t.plan(4);
-            if(!alignerTool) {
-                let source = await getBook(greekUrl);
-                let target = await getBook(defaultUrl);
-                alignerTool = new Aligner({ sourceText: [source.usfm, "grk", "ugnt"], targetText: [target.usfm, "fra", "lsg"], verbose: false});
-            }
-            t.doesNotThrow(async () => await alignerTool.setChapterVerse(2, 2));
-            t.doesNotThrow(async () => await alignerTool.setChapterVerse(5, 10));
-            t.throws(await alignerTool.setChapterVerse(41, 2));
-            t.throws(await alignerTool.setChapterVerse(0, 2));
-            t.throws(await alignerTool.setChapterVerse(1, null));
-            t.throws(await alignerTool.setChapterVerse(undefined, null));
+            await await alignerTool.setChapterVerse(2, 2);
+            await await alignerTool.setChapterVerse(5, 10);
+            t.ok("ok");
         } catch (err) {
-            // console.log(err);
+            t.notok("await alignerTool.setChapterVerse(2, 2) and await alignerTool.setChapterVerse(5, 10) should've worked", err);
+        }
+        try {
+            await alignerTool.setChapterVerse(41, 2);
+            t.notok("alignerTool.setChapterVerse(41, 2) should've not worked");
+        } catch (err) {
+            t.ok("ok");
+        }
+        try {
+            await alignerTool.setChapterVerse(0, 2);
+            t.notok("alignerTool.setChapterVerse(0, 2) should've not worked");
+        } catch (err) {
+            t.ok("ok");
+        }
+        try {
+            await alignerTool.setChapterVerse(1, null);
+            t.notok("alignerTool.setChapterVerse(1, null) should've not worked");
+        } catch (err) {
+            t.ok("ok");
+        }
+        try {
+            await alignerTool.setChapterVerse(undefined, null);
+            t.notok("alignerTool.setChapterVerse(undefined, null) should've not worked");
+        } catch (err) {
+            t.ok("ok");
         }
     },
 );
@@ -109,7 +130,7 @@ test(
             t.equal(alignerTool.getCurrentTargetSentenceStr(), "Il est lui-même une victime expiatoire pour nos péchés, non seulement pour les nôtres, mais aussi pour ceux du monde entier.");
             t.equal(Array.toString(alignerTool.getNumberVersesInChapters()), Array.toString([10, 29, 24, 21, 21]));
         } catch (err) {
-            console.log(err);
+            console.error(err);
         }
     },
 );
@@ -118,26 +139,27 @@ test(
     `alignment checks (${testGroup})`,
     async function (t) {
         try {
-            t.plan(1);
+            t.plan(2);
             let source = await getBook(greekUrl);
             let target = await getBook(defaultUrl);
-            alignerTool = new Aligner({ sourceText: [source.usfm, "grk", "ugnt"], targetText: [target.usfm, "fra", "lsg"], verbose: false});
+            let alignerToolTwo = new Aligner({ sourceText: [source.usfm, "grk", "ugnt"], targetText: [target.usfm, "fra", "lsg"], verbose: false});
             t.doesNotThrow(async () => {
-                await alignerTool.setChapterVerse(2, 2);
-                alignerTool.addAlignment(0,0);
-                alignerTool.addAlignment(0,1);
-                alignerTool.addAlignment(1,2);
-                alignerTool.addAlignment(2,4);
-                alignerTool.addAlignment(2,5);
-                alignerTool.addAlignment(2,6);
-                alignerTool.removeAlignment(1,3); // wrong alignment ref
-                await alignerTool.setChapterVerse(3, 10);
-                await alignerTool.setChapterVerse(3, 11);
-                alignerTool.addAlignment(0,0);
-                alignerTool.removeAlignment(1,3); // wrong unalignment ref does not throw
-                alignerTool.resetAlignment();
-                alignerTool.fullResetAlignment();
+                await alignerToolTwo.setChapterVerse(2, 2);
+                alignerToolTwo.addAlignment(0,0);
+                alignerToolTwo.addAlignment(0,1);
+                alignerToolTwo.addAlignment(1,2);
+                alignerToolTwo.addAlignment(2,4);
+                alignerToolTwo.addAlignment(2,5);
+                alignerToolTwo.addAlignment(2,6);
+                alignerToolTwo.removeAlignment(1,3); // wrong alignment ref
+                await alignerToolTwo.setChapterVerse(3, 10);
+                await alignerToolTwo.setChapterVerse(3, 11);
+                alignerToolTwo.addAlignment(0,0);
+                alignerToolTwo.removeAlignment(1,3); // wrong unalignment ref does not throw
+                alignerToolTwo.resetAlignment();
+                alignerToolTwo.fullResetAlignment();
             });
+            t.equal(JSON.stringify(alignerToolTwo.getAlignmentJSON()), "{}");
         } catch (err) {
             // console.log(err);
         }

@@ -10,7 +10,7 @@
     "rawTest": "bash -c \"tape -r @babel/register tests/code/**/*.cjs\"",
     "watch": "parcel watch",
     "build": "rm -fr dist && parcel build --no-source-maps",
-    "prepublishOnly": "npm run build"
+    "prepublishOnly": "npm run build && npm run test"
   },
   "repository": {
     "type": "git",
