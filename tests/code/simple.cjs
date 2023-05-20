@@ -165,3 +165,60 @@ test(
         }
     },
 );
+
+test(
+    `getSourceText and getTargetText tests in perf (${testGroup})`,
+    async function (t) {
+        try {
+            t.plan(3);
+            if(!alignerTool) {
+                let source = await getBook(greekUrl);
+                let target = await getBook(defaultUrl);
+                alignerTool = new Aligner({ sourceText: [source.usfm, "grk", "ugnt"], targetText: [target.usfm, "fra", "lsg"], verbose: false});
+            }
+            let srcPerf = JSON.parse(await alignerTool.getSourceText("perf"));
+            let trgPerf = JSON.parse(await alignerTool.getTargetText("perf"));
+            t.equal(JSON.stringify(alignerTool.getAlignmentJSON()), "{}");
+            t.equal(srcPerf.metadata.document.bookCode, "1JN");
+            t.equal(trgPerf.metadata.document.h, "1 JEAN");
+        } catch (err) {
+            console.error(err);
+        }
+    },
+);
+
+test.only(
+    `alignment report to usfm tests tests in perf (${testGroup})`,
+    async function (t) {
+
+        try {
+            t.plan(1);
+            if(!alignerTool) {
+                let source = await getBook(greekUrl);
+                let target = await getBook(defaultUrl);
+                alignerTool = new Aligner({ sourceText: [source.usfm, "grk", "ugnt"], targetText: [target.usfm, "fra", "lsg"], verbose: false});
+            }
+            t.equal(JSON.stringify(alignerTool.getAlignmentJSON()), "{}");
+            await alignerTool.setChapterVerse(1,1);
+            alignerTool.addAlignment(0,0);
+            alignerTool.addAlignment(0,1);
+            alignerTool.addAlignment(1,2);
+            alignerTool.addAlignment(2,4);
+            alignerTool.addAlignment(2,5);
+            alignerTool.addAlignment(2,6);
+            await alignerTool.setChapterVerse(2,2);
+            alignerTool.addAlignment(0,0);
+            alignerTool.addAlignment(0,1);
+            alignerTool.addAlignment(1,2);
+            alignerTool.addAlignment(2,4);
+            alignerTool.addAlignment(2,5);
+            alignerTool.addAlignment(2,6);
+            
+            let output = await alignerTool.generateAlignedUsfm();
+            // let perfOut = output.perf;
+            console.log(output.strippedAlignment["1"]["1"]);
+        } catch (err) {
+            console.error(err);
+        }
+    },
+);

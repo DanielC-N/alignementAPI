@@ -1,8 +1,9 @@
 // import { Proskomma } from 'proskomma-cross';
 import ProskommaInterface from './ProskommaInterface';
-// let ProskommaInterface = require('./ProskommaInterface');
 // import Epitelete from 'epitelete';
-// import { PipelineHandler } from 'proskomma-json-tools';
+import { PipelineHandler } from 'proskomma-json-tools';
+import pipelines from '../pipeline-tools/pipelines';
+import transforms from '../pipeline-tools/transforms';
 
 class Aligner {
     /**
@@ -356,6 +357,23 @@ class Aligner {
             
             this.AlignementJSON[this.currentReference]["alignments"][sWord]["targetIndexes"].splice(index, 1);
         }
+    }
+
+    async generateAlignedUsfm() {
+        const pipeline = new PipelineHandler({
+            pipelines: pipelines,
+            transforms: transforms,
+            proskomma: this.proskommaInterface.getInstance(),
+            verbose: true
+        });
+        let srcPerf = JSON.parse(await this.getSourceText("perf"));
+        let trgPerf = JSON.parse(await this.getTargetText("perf"));
+        let output = await pipeline.runPipeline("mergeFromAlignReportPipeline", {
+            sourcePerf: srcPerf,
+            targetPerf: trgPerf,
+            alignReport: this.getAlignmentJSON(),
+        });
+        return output;
     }
 
     generateReference() {

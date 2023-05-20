@@ -1,0 +1,466 @@
+{
+  "schema": {
+    "structure": "flat",
+    "structure_version": "0.2.1",
+    "constraints": [
+      {
+        "name": "perf",
+        "version": "0.2.1"
+      }
+    ]
+  },
+  "metadata": {
+    "translation": {
+      "id": "grk_ugnt",
+      "selectors": {
+        "lang": "grk",
+        "abbr": "ugnt"
+      },
+      "properties": {},
+      "tags": []
+    },
+    "document": {
+      "id": "TIT FR_LSG fr_français,⋅langue⋅française_ltr Tue Aug 30 2022 10:07:20 GMT+0200 (heure d’été d’Europe centrale) tc",
+      "bookCode": "TIT",
+      "usfm": "3.0",
+      "h": "ÉPÎTRE À TITE",
+      "toc": "ÉPÎTRE À TITE",
+      "toc2": "Tite",
+      "toc3": "Tt",
+      "properties": {},
+      "tags": []
+    }
+  },
+  "sequences": {
+    "ZWFmOWE5ODUt": {
+      "type": "main",
+      "blocks": [
+        {
+          "type": "graft",
+          "subtype": "title",
+          "target": "Yzk1ZjdhOTgt"
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "chapter",
+              "atts": {
+                "number": "1"
+              }
+            },
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "1"
+              }
+            },
+            "Paul, serviteur de Dieu, et apôtre de Jésus-Christ pour la foi des élus de Dieu et la connaissance de la vérité qui est selon la piété, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "2"
+              }
+            },
+            "lesquelles reposent sur l'espérance de la vie éternelle, promise dès les plus anciens temps par le Dieu qui ne ment point, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "3"
+              }
+            },
+            "et qui a manifesté sa parole en son temps par la prédication qui m'a été confiée d'après l'ordre de Dieu notre Sauveur, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "4"
+              }
+            },
+            "à Tite, mon enfant légitime en notre commune foi: que la grâce et la paix te soient données de la part de Dieu le Père et de Jésus-Christ notre Sauveur! ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "5"
+              }
+            },
+            "Je t'ai laissé en Crète, afin que tu mettes en ordre ce qui reste à régler, et que, selon mes instructions, tu établisses des anciens dans chaque ville, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "6"
+              }
+            },
+            "s'il s'y trouve quelque homme irréprochable, mari d'une seule femme, ayant des enfants fidèles, qui ne soient ni accusés de débauche ni rebelles. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "7"
+              }
+            },
+            "Car il faut que l'évêque soit irréprochable, comme économe de Dieu; qu'il ne soit ni arrogant, ni colère, ni adonné au vin, ni violent, ni porté à un gain déshonnête; ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "8"
+              }
+            },
+            "mais qu'il soit hospitalier, ami des gens de bien, modéré, juste, saint, tempérant, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "9"
+              }
+            },
+            "attaché à la vraie parole telle qu'elle a été enseignée, afin d'être capable d'exhorter selon la saine doctrine et de réfuter les contradicteurs. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "10"
+              }
+            },
+            "Il y a, en effet, surtout parmi les circoncis, beaucoup de gens rebelles, de vains discoureurs et de séducteurs, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "11"
+              }
+            },
+            "auxquels il faut fermer la bouche. Ils bouleversent des familles entières, enseignant pour un gain honteux ce qu'on ne doit pas enseigner. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "12"
+              }
+            },
+            "L'un d'entre eux, leur propre prophète, a dit: Crétois toujours menteurs, méchantes bêtes, ventres paresseux. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "13"
+              }
+            },
+            "Ce témoignage est vrai. C'est pourquoi reprends-les sévèrement, afin qu'ils aient une foi saine, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "14"
+              }
+            },
+            "et qu'ils ne s'attachent pas à des fables judaïques et à des commandements d'hommes qui se détournent de la vérité. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "15"
+              }
+            },
+            "Tout est pur pour ceux qui sont purs; mais rien n'est pur pour ceux qui sont souillés et incrédules, leur intelligence et leur conscience sont souillées. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "16"
+              }
+            },
+            "Ils font profession de connaître Dieu, mais ils le renient par leurs œuvres, étant abominables, rebelles, et incapables d'aucune bonne œuvre."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "chapter",
+              "atts": {
+                "number": "2"
+              }
+            },
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "1"
+              }
+            },
+            "Pour toi, dis les choses qui sont conformes à la saine doctrine. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "2"
+              }
+            },
+            "Dis que les vieillards doivent être sobres, honnêtes, modérés, sains dans la foi, dans la charité, dans la patience. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "3"
+              }
+            },
+            "Dis que les femmes âgées doivent aussi avoir l'extérieur qui convient à la sainteté, n'être ni médisantes, ni adonnées au vin; qu'elles doivent donner de bonnes instructions, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "4"
+              }
+            },
+            "dans le but d'apprendre aux jeunes femmes à aimer leurs maris et leurs enfants, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "5"
+              }
+            },
+            "à être retenues, chastes, occupées aux soins domestiques, bonnes, soumises à leurs maris, afin que la parole de Dieu ne soit pas blasphémée. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "6"
+              }
+            },
+            "Exhorte de même les jeunes gens à être modérés, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "7"
+              }
+            },
+            "te montrant toi-même à tous égards un modèle de bonnes œuvres, et donnant un enseignement pur, digne, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "8"
+              }
+            },
+            "une parole saine, irréprochable, afin que l'adversaire soit confus, n'ayant aucun mal à dire de nous. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "9"
+              }
+            },
+            "Exhorte les serviteurs à être soumis à leurs maîtres, à leur plaire en toutes choses, à n'être point contredisants, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "10"
+              }
+            },
+            "à ne rien dérober, mais à montrer toujours une parfaite fidélité, afin de faire honorer en tout la doctrine de Dieu notre Sauveur. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "11"
+              }
+            },
+            "Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "12"
+              }
+            },
+            "Elle nous enseigne à renoncer à l'impiété et aux convoitises mondaines, et à vivre dans le siècle présent selon la sagesse, la justice et la piété, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "13"
+              }
+            },
+            "en attendant la bienheureuse espérance, et la manifestation de la gloire du grand Dieu et de notre Sauveur Jésus-Christ, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "14"
+              }
+            },
+            "qui s'est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui et zélé pour les bonnes œuvres. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "15"
+              }
+            },
+            "Dis ces choses, exhorte, et reprends, avec une pleine autorité. Que personne ne te méprise."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "chapter",
+              "atts": {
+                "number": "3"
+              }
+            },
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "1"
+              }
+            },
+            "Rappelle-leur d'être soumis aux magistrats et aux autorités, d'obéir, d'être prêts à toute bonne œuvre, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "2"
+              }
+            },
+            "de ne médire de personne, d'être pacifiques, modérés, pleins de douceur envers tous les hommes. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "3"
+              }
+            },
+            "Car nous aussi, nous étions autrefois insensés, désobéissants, égarés, asservis à toute espèce de convoitises et de voluptés, vivant dans la méchanceté et dans l'envie, dignes d'être haïs, et nous haïssant les uns les autres. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "4"
+              }
+            },
+            "Mais, lorsque la bonté de Dieu notre Sauveur et son amour pour les hommes ont été manifestés, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "5"
+              }
+            },
+            "il nous a sauvés, non à cause des œuvres de justice que nous aurions faites, mais selon sa miséricorde, par le baptême de la régénération et le renouvellement du Saint-Esprit, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "6"
+              }
+            },
+            "qu'il a répandu sur nous avec abondance par Jésus-Christ notre Sauveur, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "7"
+              }
+            },
+            "afin que, justifiés par sa grâce, nous devenions, en espérance, héritiers de la vie éternelle. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "8"
+              }
+            },
+            "Cette parole est certaine, et je veux que tu affirmes ces choses, afin que ceux qui ont cru en Dieu s'appliquent à pratiquer de bonnes oeuvres. Voilà ce qui est bon et utile aux hommes. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "9"
+              }
+            },
+            "Mais évite les discussions folles, les généalogies, les querelles, les disputes relatives à la loi; car elles sont inutiles et vaines. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "10"
+              }
+            },
+            "Éloigne de toi, après un premier et un second avertissement, celui qui provoque des divisions, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "11"
+              }
+            },
+            "sachant qu'un homme de cette espèce est perverti, et qu'il pèche, en se condamnant lui-même. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "12"
+              }
+            },
+            "Lorsque je t'enverrai Artémas ou Tychique, hâte-toi de venir me rejoindre à Nicopolis; car c'est là que j'ai résolu de passer l'hiver. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "13"
+              }
+            },
+            "Aie soin de pourvoir au voyage de Zénas, le docteur de la loi, et d'Apollos, en sorte que rien ne leur manque. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "14"
+              }
+            },
+            "Il faut que les nôtres aussi apprennent à pratiquer de bonnes oeuvres pour subvenir aux besoins pressants, afin qu'ils ne soient pas sans produire des fruits. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "15"
+              }
+            },
+            "Tous ceux qui sont avec moi te saluent. Salue ceux qui nous aiment dans la foi. Que la grâce soit avec vous tous!"
+          ]
+        }
+      ]
+    },
+    "Yzk1ZjdhOTgt": {
+      "type": "title",
+      "blocks": [
+        {
+          "type": "paragraph",
+          "subtype": "usfm:mt",
+          "content": [
+            "ÉPÎTRE À TITE"
+          ]
+        }
+      ]
+    }
+  },
+  "main_sequence_id": "ZWFmOWE5ODUt"
+}

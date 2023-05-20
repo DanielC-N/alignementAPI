@@ -1,0 +1,130 @@
+[
+  {
+    "id": 0,
+    "type": "Inputs",
+    "inputs": {
+      "sourcePerf": "json",
+      "targetPerf": "json",
+      "alignReport": "json"
+    }
+  },
+  {
+    "id": 1,
+    "title": "Counts words occurrences",
+    "name": "verseWords",
+    "type": "Transform",
+    "transformName": "verseWords",
+    "inputs": [
+      {
+        "name": "perf",
+        "type": "json",
+        "source": "Input sourcePerf"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "verseWords",
+        "type": "json"
+      }
+    ],
+    "description": "PERF=>JSON: Counts words occurrences"
+  },
+  {
+    "id": 2,
+    "title": "Strip Alignment",
+    "name": "stripAlignment",
+    "type": "Transform",
+    "transformName": "stripAlignment",
+    "inputs": [
+      {
+        "name": "perf",
+        "type": "json",
+        "source": "Input sourcePerf"
+      },
+      {
+        "name": "verseWords",
+        "type": "json",
+        "source": "Transform 1 verseWords"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "perf",
+        "type": "json"
+      },
+      {
+        "name": "strippedAlignment",
+        "type": "json"
+      }
+    ],
+    "description": "PERF=>PERF: Strips alignment markup"
+  },
+  {
+    "id": 3,
+    "title": "Merge stripped perf",
+    "name": "mergePerfText",
+    "type": "Transform",
+    "transformName": "mergePerfText",
+    "inputs": [
+      {
+        "name": "perf",
+        "type": "json",
+        "source": "Transform 2 perf"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "perf",
+        "type": "json"
+      }
+    ],
+    "description": "PERF=>PERF: Merge consecutive text strings"
+  },
+  {
+    "id": 4,
+    "title": "Merge all",
+    "name": "mergeReportAndPerf",
+    "type": "Transform",
+    "transformName": "mergeReportAndPerf",
+    "inputs": [
+      {
+        "name": "perf",
+        "type": "json",
+        "source": "Input targetPerf"
+      },
+      {
+        "name": "strippedSource",
+        "type": "json",
+        "source": "Transform 2 strippedAlignment"
+      },
+      {
+        "name": "report",
+        "type": "json",
+        "source": "Input alignReport"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "perf",
+        "type": "json"
+      }
+    ],
+    "description": "PERF=>PERF: Merge the alignmentReport and the strippedAlignment into the targetPerf input"
+  },
+  {
+    "id": 999,
+    "type": "Outputs",
+    "outputs": [
+      {
+        "name": "perf",
+        "type": "json",
+        "source": "Transform 4 perf"
+      },
+      {
+        "name": "strippedAlignment",
+        "type": "json",
+        "source": "Transform 2 strippedAlignment"
+      }
+    ]
+  }
+]
