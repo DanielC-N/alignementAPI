@@ -20,25 +20,24 @@
       "tags": []
     },
     "document": {
-      "id": "TIT FR_LSG fr_français,⋅langue⋅française_ltr Tue Aug 30 2022 10:07:20 GMT+0200 (heure d’été d’Europe centrale) tc",
-      "bookCode": "TIT",
-      "usfm": "3.0",
-      "h": "ÉPÎTRE À TITE",
-      "toc": "ÉPÎTRE À TITE",
-      "toc2": "Tite",
-      "toc3": "Tt",
+      "id": "1JN 1JNFLS1910.PTX, Louis Segond 1910, French, 31-10-2011, Moon Sun Kim. Updated for DBL by E. Canales, September 2012.",
+      "bookCode": "1JN",
+      "ide": "UTF-8",
+      "h": "1 JEAN",
+      "toc": "Première épître de Jean",
+      "toc2": "1 Jean",
       "properties": {},
       "tags": []
     }
   },
   "sequences": {
-    "ZWFmOWE5ODUt": {
+    "M2E4YzExY2Et": {
       "type": "main",
       "blocks": [
         {
           "type": "graft",
           "subtype": "title",
-          "target": "Yzk1ZjdhOTgt"
+          "target": "Njc0MGQ2NmYt"
         },
         {
           "type": "paragraph",
@@ -58,7 +57,7 @@
                 "number": "1"
               }
             },
-            "Paul, serviteur de Dieu, et apôtre de Jésus-Christ pour la foi des élus de Dieu et la connaissance de la vérité qui est selon la piété, ",
+            "Ce qui était dès le commencement, ce que nous avons entendu, ce que nous avons vu de nos yeux, ce que nous avons contemplé et que nos mains ont touché, concernant la parole de vie, ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -66,7 +65,7 @@
                 "number": "2"
               }
             },
-            "lesquelles reposent sur l'espérance de la vie éternelle, promise dès les plus anciens temps par le Dieu qui ne ment point, ",
+            "car la vie a été manifestée, et nous l’avons vue et nous lui rendons témoignage, et nous vous annonçons la vie éternelle, qui était auprès du Père et qui nous a été manifestée, ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -74,7 +73,7 @@
                 "number": "3"
               }
             },
-            "et qui a manifesté sa parole en son temps par la prédication qui m'a été confiée d'après l'ordre de Dieu notre Sauveur, ",
+            "ce que nous avons vu et entendu, nous vous l’annonçons, à vous aussi, afin que vous aussi vous soyez en communion avec nous. Or, notre communion est avec le Père et avec son Fils Jésus-Christ. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -82,7 +81,13 @@
                 "number": "4"
               }
             },
-            "à Tite, mon enfant légitime en notre commune foi: que la grâce et la paix te soient données de la part de Dieu le Père et de Jésus-Christ notre Sauveur! ",
+            "Et nous écrivons ces choses, afin que notre joie soit parfaite."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
             {
               "type": "mark",
               "subtype": "verses",
@@ -90,7 +95,7 @@
                 "number": "5"
               }
             },
-            "Je t'ai laissé en Crète, afin que tu mettes en ordre ce qui reste à régler, et que, selon mes instructions, tu établisses des anciens dans chaque ville, ",
+            "La nouvelle que nous avons apprise de lui, et que nous vous annonçons, c’est que Dieu est lumière, et qu’il n’y a point en lui de ténèbres. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -98,7 +103,7 @@
                 "number": "6"
               }
             },
-            "s'il s'y trouve quelque homme irréprochable, mari d'une seule femme, ayant des enfants fidèles, qui ne soient ni accusés de débauche ni rebelles. ",
+            "Si nous disons que nous sommes en communion avec lui, et que nous marchions dans les ténèbres, nous mentons, et nous ne pratiquons pas la vérité. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -106,7 +111,7 @@
                 "number": "7"
               }
             },
-            "Car il faut que l'évêque soit irréprochable, comme économe de Dieu; qu'il ne soit ni arrogant, ni colère, ni adonné au vin, ni violent, ni porté à un gain déshonnête; ",
+            "Mais si nous marchons dans la lumière, comme il est lui-même dans la lumière, nous sommes mutuellement en communion, et le sang de Jésus son Fils nous purifie de tout péché. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -114,7 +119,7 @@
                 "number": "8"
               }
             },
-            "mais qu'il soit hospitalier, ami des gens de bien, modéré, juste, saint, tempérant, ",
+            "Si nous disons que nous n’avons pas de péché, nous nous séduisons nous-mêmes, et la vérité n’est point en nous. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -122,7 +127,7 @@
                 "number": "9"
               }
             },
-            "attaché à la vraie parole telle qu'elle a été enseignée, afin d'être capable d'exhorter selon la saine doctrine et de réfuter les contradicteurs. ",
+            "Si nous confessons nos péchés, il est fidèle et juste pour nous les pardonner, et pour nous purifier de toute iniquité. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -130,7 +135,112 @@
                 "number": "10"
               }
             },
-            "Il y a, en effet, surtout parmi les circoncis, beaucoup de gens rebelles, de vains discoureurs et de séducteurs, ",
+            "Si nous disons que nous n’avons pas péché, nous le faisons menteur, et sa parole n’est point en nous."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "chapter",
+              "atts": {
+                "number": "2"
+              }
+            },
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "1"
+              }
+            },
+            "Mes petits enfants, je vous écris ces choses, afin que vous ne péchiez point. Et si quelqu’un a péché, nous avons un avocat auprès du Père, Jésus-Christ le juste. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "2"
+              }
+            },
+            "Il est lui-même une victime expiatoire pour nos péchés, non seulement pour les nôtres, mais aussi pour ceux du monde entier."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "3"
+              }
+            },
+            "Si nous gardons ses commandements, par là nous savons que nous l’avons connu. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "4"
+              }
+            },
+            "Celui qui dit: Je l’ai connu, et qui ne garde pas ses commandements, est un menteur, et la vérité n’est point en lui. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "5"
+              }
+            },
+            "Mais celui qui garde sa parole, l’amour de Dieu est véritablement parfait en lui: par là nous savons que nous sommes en lui. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "6"
+              }
+            },
+            "Celui qui dit qu’il demeure en lui doit marcher aussi comme il a marché lui-même."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "7"
+              }
+            },
+            "Bien-aimés, ce n’est pas un commandement nouveau que je vous écris, mais un commandement ancien que vous avez eu dès le commencement; ce commandement ancien, c’est la parole que vous avez entendue. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "8"
+              }
+            },
+            "Toutefois, c’est un commandement nouveau que je vous écris, ce qui est vrai en lui et en vous, car les ténèbres se dissipent et la lumière véritable paraît déjà. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "9"
+              }
+            },
+            "Celui qui dit qu’il est dans la lumière, et qui hait son frère, est encore dans les ténèbres. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "10"
+              }
+            },
+            "Celui qui aime son frère demeure dans la lumière, et aucune occasion de chute n’est en lui. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -138,7 +248,13 @@
                 "number": "11"
               }
             },
-            "auxquels il faut fermer la bouche. Ils bouleversent des familles entières, enseignant pour un gain honteux ce qu'on ne doit pas enseigner. ",
+            "Mais celui qui hait son frère est dans les ténèbres, il marche dans les ténèbres, et il ne sait où il va, parce que les ténèbres ont aveuglé ses yeux."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
             {
               "type": "mark",
               "subtype": "verses",
@@ -146,7 +262,7 @@
                 "number": "12"
               }
             },
-            "L'un d'entre eux, leur propre prophète, a dit: Crétois toujours menteurs, méchantes bêtes, ventres paresseux. ",
+            "Je vous écris, petits enfants, parce que vos péchés vous sont pardonnés à cause de son nom. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -154,7 +270,7 @@
                 "number": "13"
               }
             },
-            "Ce témoignage est vrai. C'est pourquoi reprends-les sévèrement, afin qu'ils aient une foi saine, ",
+            "Je vous écris, pères, parce que vous avez connu celui qui est dès le commencement. Je vous écris, jeunes gens, parce que vous avez vaincu le malin. Je vous ai écrit, petits enfants, parce que vous avez connu le Père. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -162,7 +278,7 @@
                 "number": "14"
               }
             },
-            "et qu'ils ne s'attachent pas à des fables judaïques et à des commandements d'hommes qui se détournent de la vérité. ",
+            "Je vous ai écrit, pères, parce que vous avez connu celui qui est dès le commencement. Je vous ai écrit, jeunes gens, parce que vous êtes forts, et que la parole de Dieu demeure en vous, et que vous avez vaincu le malin. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -170,7 +286,7 @@
                 "number": "15"
               }
             },
-            "Tout est pur pour ceux qui sont purs; mais rien n'est pur pour ceux qui sont souillés et incrédules, leur intelligence et leur conscience sont souillées. ",
+            "N’aimez point le monde, ni les choses qui sont dans le monde. Si quelqu’un aime le monde, l’amour du Père n’est point en lui; ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -178,7 +294,15 @@
                 "number": "16"
               }
             },
-            "Ils font profession de connaître Dieu, mais ils le renient par leurs œuvres, étant abominables, rebelles, et incapables d'aucune bonne œuvre."
+            "car tout ce qui est dans le monde, la convoitise de la chair, la convoitise des yeux, et l’orgueil de la vie, ne vient point du Père, mais vient du monde. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "17"
+              }
+            },
+            "Et le monde passe, et sa convoitise aussi; mais celui qui fait la volonté de Dieu demeure éternellement."
           ]
         },
         {
@@ -187,131 +311,106 @@
           "content": [
             {
               "type": "mark",
-              "subtype": "chapter",
+              "subtype": "verses",
               "atts": {
-                "number": "2"
+                "number": "18"
               }
             },
+            "Petits enfants, c’est la dernière heure, et comme vous avez appris qu’un antéchrist vient, il y a maintenant plusieurs antéchrists: par là nous connaissons que c’est la dernière heure. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "1"
+                "number": "19"
               }
             },
-            "Pour toi, dis les choses qui sont conformes à la saine doctrine. ",
+            "Ils sont sortis du milieu de nous, mais ils n’étaient pas des nôtres; car s’ils eussent été des nôtres, ils seraient demeurés avec nous, mais cela est arrivé afin qu’il fût manifeste que tous ne sont pas des nôtres. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "2"
+                "number": "20"
               }
             },
-            "Dis que les vieillards doivent être sobres, honnêtes, modérés, sains dans la foi, dans la charité, dans la patience. ",
+            "Pour vous, vous avez reçu l’onction de la part de celui qui est saint, et vous avez tous de la connaissance. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "3"
+                "number": "21"
               }
             },
-            "Dis que les femmes âgées doivent aussi avoir l'extérieur qui convient à la sainteté, n'être ni médisantes, ni adonnées au vin; qu'elles doivent donner de bonnes instructions, ",
+            "Je vous ai écrit, non que vous ne connaissiez pas la vérité, mais parce que vous la connaissez, et parce qu’aucun mensonge ne vient de la vérité. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "4"
+                "number": "22"
               }
             },
-            "dans le but d'apprendre aux jeunes femmes à aimer leurs maris et leurs enfants, ",
+            "Qui est menteur, sinon celui qui nie que Jésus est le Christ? Celui-là est l’antéchrist, qui nie le Père et le Fils. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "5"
+                "number": "23"
               }
             },
-            "à être retenues, chastes, occupées aux soins domestiques, bonnes, soumises à leurs maris, afin que la parole de Dieu ne soit pas blasphémée. ",
+            "Quiconque nie le Fils n’a pas non plus le Père; quiconque confesse le Fils a aussi le Père. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "6"
+                "number": "24"
               }
             },
-            "Exhorte de même les jeunes gens à être modérés, ",
+            "Que ce que vous avez entendu dès le commencement demeure en vous. Si ce que vous avez entendu dès le commencement demeure en vous, vous demeurerez aussi dans le Fils et dans le Père. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "7"
+                "number": "25"
               }
             },
-            "te montrant toi-même à tous égards un modèle de bonnes œuvres, et donnant un enseignement pur, digne, ",
+            "Et la promesse qu’il nous a faite, c’est la vie éternelle. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "8"
+                "number": "26"
               }
             },
-            "une parole saine, irréprochable, afin que l'adversaire soit confus, n'ayant aucun mal à dire de nous. ",
+            "Je vous ai écrit ces choses au sujet de ceux qui vous égarent. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "9"
+                "number": "27"
               }
             },
-            "Exhorte les serviteurs à être soumis à leurs maîtres, à leur plaire en toutes choses, à n'être point contredisants, ",
+            "Pour vous, l’onction que vous avez reçue de lui demeure en vous, et vous n’avez pas besoin qu’on vous enseigne; mais comme son onction vous enseigne toutes choses, et qu’elle est véritable et qu’elle n’est point un mensonge, demeurez en lui selon les enseignements qu’elle vous a donnés."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "10"
+                "number": "28"
               }
             },
-            "à ne rien dérober, mais à montrer toujours une parfaite fidélité, afin de faire honorer en tout la doctrine de Dieu notre Sauveur. ",
+            "Et maintenant, petits enfants, demeurez en lui, afin que, lorsqu’il paraîtra, nous ayons de l’assurance, et qu’à son avènement nous ne soyons pas confus et éloignés de lui. ",
             {
               "type": "mark",
               "subtype": "verses",
               "atts": {
-                "number": "11"
+                "number": "29"
               }
             },
-            "Car la grâce de Dieu, source de salut pour tous les hommes, a été manifestée. ",
-            {
-              "type": "mark",
-              "subtype": "verses",
-              "atts": {
-                "number": "12"
-              }
-            },
-            "Elle nous enseigne à renoncer à l'impiété et aux convoitises mondaines, et à vivre dans le siècle présent selon la sagesse, la justice et la piété, ",
-            {
-              "type": "mark",
-              "subtype": "verses",
-              "atts": {
-                "number": "13"
-              }
-            },
-            "en attendant la bienheureuse espérance, et la manifestation de la gloire du grand Dieu et de notre Sauveur Jésus-Christ, ",
-            {
-              "type": "mark",
-              "subtype": "verses",
-              "atts": {
-                "number": "14"
-              }
-            },
-            "qui s'est donné lui-même pour nous, afin de nous racheter de toute iniquité, et de se faire un peuple qui lui appartienne, purifié par lui et zélé pour les bonnes œuvres. ",
-            {
-              "type": "mark",
-              "subtype": "verses",
-              "atts": {
-                "number": "15"
-              }
-            },
-            "Dis ces choses, exhorte, et reprends, avec une pleine autorité. Que personne ne te méprise."
+            "Si vous savez qu’il est juste, reconnaissez que quiconque pratique la justice est né de lui."
           ]
         },
         {
@@ -332,7 +431,7 @@
                 "number": "1"
               }
             },
-            "Rappelle-leur d'être soumis aux magistrats et aux autorités, d'obéir, d'être prêts à toute bonne œuvre, ",
+            "Voyez quel amour le Père nous a témoigné, pour que nous soyons appelés enfants de Dieu! Et nous le sommes. Si le monde ne nous connaît pas, c’est qu’il ne l’a pas connu. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -340,7 +439,7 @@
                 "number": "2"
               }
             },
-            "de ne médire de personne, d'être pacifiques, modérés, pleins de douceur envers tous les hommes. ",
+            "Bien-aimés, nous sommes maintenant enfants de Dieu, et ce que nous serons n’a pas encore été manifesté; mais nous savons que, lorsque cela sera manifesté, nous serons semblables à lui, parce que nous le verrons tel qu’il est. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -348,7 +447,7 @@
                 "number": "3"
               }
             },
-            "Car nous aussi, nous étions autrefois insensés, désobéissants, égarés, asservis à toute espèce de convoitises et de voluptés, vivant dans la méchanceté et dans l'envie, dignes d'être haïs, et nous haïssant les uns les autres. ",
+            "Quiconque a cette espérance en lui se purifie, comme lui-même est pur. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -356,7 +455,7 @@
                 "number": "4"
               }
             },
-            "Mais, lorsque la bonté de Dieu notre Sauveur et son amour pour les hommes ont été manifestés, ",
+            "Quiconque pèche transgresse la loi, et le péché est la transgression de la loi. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -364,7 +463,7 @@
                 "number": "5"
               }
             },
-            "il nous a sauvés, non à cause des œuvres de justice que nous aurions faites, mais selon sa miséricorde, par le baptême de la régénération et le renouvellement du Saint-Esprit, ",
+            "Or, vous le savez, Jésus a paru pour ôter les péchés, et il n’y a point en lui de péché. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -372,7 +471,7 @@
                 "number": "6"
               }
             },
-            "qu'il a répandu sur nous avec abondance par Jésus-Christ notre Sauveur, ",
+            "Quiconque demeure en lui ne pèche point; quiconque pèche ne l’a pas vu, et ne l’a pas connu. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -380,7 +479,7 @@
                 "number": "7"
               }
             },
-            "afin que, justifiés par sa grâce, nous devenions, en espérance, héritiers de la vie éternelle. ",
+            "Petits enfants, que personne ne vous séduise. Celui qui pratique la justice est juste, comme lui-même est juste. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -388,7 +487,7 @@
                 "number": "8"
               }
             },
-            "Cette parole est certaine, et je veux que tu affirmes ces choses, afin que ceux qui ont cru en Dieu s'appliquent à pratiquer de bonnes oeuvres. Voilà ce qui est bon et utile aux hommes. ",
+            "Celui qui pèche est du diable, car le diable pèche dès le commencement. Le Fils de Dieu a paru afin de détruire les œuvres du diable. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -396,7 +495,7 @@
                 "number": "9"
               }
             },
-            "Mais évite les discussions folles, les généalogies, les querelles, les disputes relatives à la loi; car elles sont inutiles et vaines. ",
+            "Quiconque est né de Dieu ne pratique pas le péché, parce que la semence de Dieu demeure en lui; et il ne peut pécher, parce qu’il est né de Dieu. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -404,7 +503,13 @@
                 "number": "10"
               }
             },
-            "Éloigne de toi, après un premier et un second avertissement, celui qui provoque des divisions, ",
+            "C’est par là que se font reconnaître les enfants de Dieu et les enfants du diable. Quiconque ne pratique pas la justice n’est pas de Dieu, non plus que celui qui n’aime pas son frère."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
             {
               "type": "mark",
               "subtype": "verses",
@@ -412,7 +517,7 @@
                 "number": "11"
               }
             },
-            "sachant qu'un homme de cette espèce est perverti, et qu'il pèche, en se condamnant lui-même. ",
+            "Car ce qui vous a été annoncé et ce que vous avez entendu dès le commencement, c’est que nous devons nous aimer les uns les autres, ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -420,7 +525,7 @@
                 "number": "12"
               }
             },
-            "Lorsque je t'enverrai Artémas ou Tychique, hâte-toi de venir me rejoindre à Nicopolis; car c'est là que j'ai résolu de passer l'hiver. ",
+            "et ne pas ressembler à Caïn, qui était du malin, et qui tua son frère. Et pourquoi le tua-t-il? parce que ses œuvres étaient mauvaises, et que celles de son frère étaient justes. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -428,7 +533,7 @@
                 "number": "13"
               }
             },
-            "Aie soin de pourvoir au voyage de Zénas, le docteur de la loi, et d'Apollos, en sorte que rien ne leur manque. ",
+            "Ne vous étonnez pas, frères, si le monde vous hait. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -436,7 +541,7 @@
                 "number": "14"
               }
             },
-            "Il faut que les nôtres aussi apprennent à pratiquer de bonnes oeuvres pour subvenir aux besoins pressants, afin qu'ils ne soient pas sans produire des fruits. ",
+            "Nous savons que nous sommes passés de la mort à la vie, parce que nous aimons les frères. Celui qui n’aime pas demeure dans la mort. ",
             {
               "type": "mark",
               "subtype": "verses",
@@ -444,23 +549,469 @@
                 "number": "15"
               }
             },
-            "Tous ceux qui sont avec moi te saluent. Salue ceux qui nous aiment dans la foi. Que la grâce soit avec vous tous!"
+            "Quiconque hait son frère est un meurtrier, et vous savez qu’aucun meurtrier n’a la vie éternelle demeurant en lui. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "16"
+              }
+            },
+            "Nous avons connu l’amour, en ce qu’il a donné sa vie pour nous; nous aussi, nous devons donner notre vie pour les frères. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "17"
+              }
+            },
+            "Si quelqu’un possède les biens du monde, et que, voyant son frère dans le besoin, il lui ferme ses entrailles, comment l’amour de Dieu demeure-t-il en lui? ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "18"
+              }
+            },
+            "Petits enfants, n’aimons pas en paroles et avec la langue, mais en actions et avec vérité. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "19"
+              }
+            },
+            "Par là nous connaîtrons que nous sommes de la vérité, et nous rassurerons nos cœurs devant lui; ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "20"
+              }
+            },
+            "car si notre cœur nous condamne, Dieu est plus grand que notre cœur, et il connaît toutes choses. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "21"
+              }
+            },
+            "Bien-aimés, si notre cœur ne nous condamne pas, nous avons de l’assurance devant Dieu. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "22"
+              }
+            },
+            "Quoi que ce soit que nous demandions, nous le recevons de lui, parce que nous gardons ses commandements et que nous faisons ce qui lui est agréable. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "23"
+              }
+            },
+            "Et c’est ici son commandement: que nous croyions au nom de son Fils Jésus-Christ, et que nous nous aimions les uns les autres, selon le commandement qu’il nous a donné. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "24"
+              }
+            },
+            "Celui qui garde ses commandements demeure en Dieu, et Dieu en lui; et nous connaissons qu’il demeure en nous par l’Esprit qu’il nous a donné."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "chapter",
+              "atts": {
+                "number": "4"
+              }
+            },
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "1"
+              }
+            },
+            "Bien-aimés, n’ajoutez pas foi à tout esprit; mais éprouvez les esprits, pour savoir s’ils sont de Dieu, car plusieurs faux prophètes sont venus dans le monde. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "2"
+              }
+            },
+            "Reconnaissez à ceci l’Esprit de Dieu: tout esprit qui confesse Jésus-Christ venu en chair est de Dieu; ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "3"
+              }
+            },
+            "et tout esprit qui ne confesse pas Jésus n’est pas de Dieu, c’est celui de l’antéchrist, dont vous avez appris la venue, et qui maintenant est déjà dans le monde. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "4"
+              }
+            },
+            "Vous, petits enfants, vous êtes de Dieu, et vous les avez vaincus, parce que celui qui est en vous est plus grand que celui qui est dans le monde. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "5"
+              }
+            },
+            "Eux, ils sont du monde; c’est pourquoi ils parlent d’après le monde, et le monde les écoute. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "6"
+              }
+            },
+            "Nous, nous sommes de Dieu; celui qui connaît Dieu nous écoute; celui qui n’est pas de Dieu ne nous écoute pas: c’est par là que nous connaissons l’esprit de la vérité et l’esprit de l’erreur."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "7"
+              }
+            },
+            "Bien-aimés, aimons nous les uns les autres; car l’amour est de Dieu, et quiconque aime est né de Dieu et connaît Dieu. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "8"
+              }
+            },
+            "Celui qui n’aime pas n’a pas connu Dieu, car Dieu est amour. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "9"
+              }
+            },
+            "L’amour de Dieu a été manifesté envers nous en ce que Dieu a envoyé son Fils unique dans le monde, afin que nous vivions par lui. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "10"
+              }
+            },
+            "Et cet amour consiste, non point en ce que nous avons aimé Dieu, mais en ce qu’il nous a aimés et a envoyé son Fils comme victime expiatoire pour nos péchés. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "11"
+              }
+            },
+            "Bien-aimés, si Dieu nous a ainsi aimés, nous devons aussi nous aimer les uns les autres. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "12"
+              }
+            },
+            "Personne n’a jamais vu Dieu; si nous nous aimons les uns les autres, Dieu demeure en nous, et son amour est parfait en nous. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "13"
+              }
+            },
+            "Nous connaissons que nous demeurons en lui, et qu’il demeure en nous, en ce qu’il nous a donné de son Esprit. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "14"
+              }
+            },
+            "Et nous, nous avons vu et nous attestons que le Père a envoyé le Fils comme Sauveur du monde. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "15"
+              }
+            },
+            "Celui qui confessera que Jésus est le Fils de Dieu, Dieu demeure en lui, et lui en Dieu. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "16"
+              }
+            },
+            "Et nous, nous avons connu l’amour que Dieu a pour nous, et nous y avons cru. Dieu est amour; et celui qui demeure dans l’amour demeure en Dieu, et Dieu demeure en lui. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "17"
+              }
+            },
+            "Tel il est, tels nous sommes aussi dans ce monde: c’est en cela que l’amour est parfait en nous, afin que nous ayons de l’assurance au jour du jugement. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "18"
+              }
+            },
+            "La crainte n’est pas dans l’amour, mais l’amour parfait bannit la crainte; car la crainte suppose un châtiment, et celui qui craint n’est pas parfait dans l’amour. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "19"
+              }
+            },
+            "Pour nous, nous l’aimons, parce qu’il nous a aimés le premier. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "20"
+              }
+            },
+            "Si quelqu’un dit: J’aime Dieu, et qu’il haïsse son frère, c’est un menteur; car celui qui n’aime pas son frère qu’il voit, comment peut-il aimer Dieu qu’il ne voit pas? ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "21"
+              }
+            },
+            "Et nous avons de lui ce commandement: que celui qui aime Dieu aime aussi son frère."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "chapter",
+              "atts": {
+                "number": "5"
+              }
+            },
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "1"
+              }
+            },
+            "Quiconque croit que Jésus est le Christ, est né de Dieu, et quiconque aime celui qui l’a engendré aime aussi celui qui est né de lui. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "2"
+              }
+            },
+            "Nous connaissons que nous aimons les enfants de Dieu, lorsque nous aimons Dieu, et que nous pratiquons ses commandements. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "3"
+              }
+            },
+            "Car l’amour de Dieu consiste à garder ses commandements. Et ses commandements ne sont pas pénibles, ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "4"
+              }
+            },
+            "parce que tout ce qui est né de Dieu triomphe du monde; et la victoire qui triomphe du monde, c’est notre foi. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "5"
+              }
+            },
+            "Qui est celui qui a triomphé du monde, sinon celui qui croit que Jésus est le Fils de Dieu? ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "6"
+              }
+            },
+            "C’est lui, Jésus-Christ, qui est venu avec de l’eau et du sang; non avec l’eau seulement, mais avec l’eau et avec le sang; et c’est l’Esprit qui rend témoignage, parce que l’Esprit est la vérité. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "7"
+              }
+            },
+            "Car il y en a trois qui rendent témoignage: ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "8"
+              }
+            },
+            "l’Esprit, l’eau et le sang, et les trois sont d’accord. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "9"
+              }
+            },
+            "Si nous recevons le témoignage des hommes, le témoignage de Dieu est plus grand; car le témoignage de Dieu consiste en ce qu’il a rendu témoignage à son Fils. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "10"
+              }
+            },
+            "Celui qui croit au Fils de Dieu a ce témoignage en lui-même; celui qui ne croit pas Dieu le fait menteur, puisqu’il ne croit pas au témoignage que Dieu a rendu à son Fils. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "11"
+              }
+            },
+            "Et voici ce témoignage, c’est que Dieu nous a donné la vie éternelle, et que cette vie est dans son Fils. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "12"
+              }
+            },
+            "Celui qui a le Fils a la vie; celui qui n’a pas le Fils de Dieu n’a pas la vie. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "13"
+              }
+            },
+            "Je vous ai écrit ces choses, afin que vous sachiez que vous avez la vie éternelle, vous qui croyez au nom du Fils de Dieu."
+          ]
+        },
+        {
+          "type": "paragraph",
+          "subtype": "usfm:p",
+          "content": [
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "14"
+              }
+            },
+            "Nous avons auprès de lui cette assurance, que si nous demandons quelque chose selon sa volonté, il nous écoute. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "15"
+              }
+            },
+            "Et si nous savons qu’il nous écoute, quelque chose que nous demandions, nous savons que nous possédons la chose que nous lui avons demandée. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "16"
+              }
+            },
+            "Si quelqu’un voit son frère commettre un péché qui ne mène point à la mort, qu’il prie, et Dieu donnera la vie à ce frère, il la donnera à ceux qui commettent un péché qui ne mène point à la mort. Il y a un péché qui mène à la mort; ce n’est pas pour ce péché-là que je dis de prier. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "17"
+              }
+            },
+            "Toute iniquité est un péché, et il y a tel péché qui ne mène pas à la mort. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "18"
+              }
+            },
+            "Nous savons que quiconque est né de Dieu ne pèche point; mais celui qui est né de Dieu se garde lui-même, et le malin ne le touche pas. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "19"
+              }
+            },
+            "Nous savons que nous sommes de Dieu, et que le monde entier est sous la puissance du malin. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "20"
+              }
+            },
+            "Nous savons aussi que le Fils de Dieu est venu, et qu’il nous a donné l’intelligence pour connaître le Véritable; et nous sommes dans le Véritable, en son Fils Jésus-Christ. C’est lui qui est le Dieu véritable, et la vie éternelle. ",
+            {
+              "type": "mark",
+              "subtype": "verses",
+              "atts": {
+                "number": "21"
+              }
+            },
+            "Petits enfants, gardez-vous des idoles."
           ]
         }
       ]
     },
-    "Yzk1ZjdhOTgt": {
+    "Njc0MGQ2NmYt": {
       "type": "title",
       "blocks": [
         {
           "type": "paragraph",
           "subtype": "usfm:mt",
           "content": [
-            "ÉPÎTRE À TITE"
+            "PREMIÈRE ÉPÎTRE DE JEAN"
           ]
         }
       ]
     }
   },
-  "main_sequence_id": "ZWFmOWE5ODUt"
+  "main_sequence_id": "M2E4YzExY2Et"
 }

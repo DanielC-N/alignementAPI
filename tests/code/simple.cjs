@@ -6,7 +6,7 @@ const fetch = (...args) =>
 
 const testGroup = 'Simple tests';
 
-const defaultUrl = "https://git.door43.org/MarkHowe/fr_lsg/raw/branch/master/63-1JN.usfm";
+const defaultUrl = "https://raw.githubusercontent.com/DanielC-N/alignementAPI/update/tests/data/63-1JN_stripped.usfm";
 const greekUrl = "https://git.door43.org/unfoldingWord/el-x-koine_ugnt/raw/branch/master/63-1JN.usfm";
 
 let alignerTool = null;
@@ -216,7 +216,7 @@ test.only(
             
             let output = await alignerTool.generateAlignedUsfm();
             // let perfOut = output.perf;
-            console.log(output.strippedAlignment["1"]["1"]);
+            console.log(output.report[1][1]);
         } catch (err) {
             console.error(err);
         }
